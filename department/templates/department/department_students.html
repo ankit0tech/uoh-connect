@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class='post-list'>
+        <h3><a href="{% url 'department:details' pk=department.pk %}">{{ department.name }}</a></h3>
+        {% for student in students %}
+            <a href="{% url 'accounts:profile' pk=student.pk %}"><h4>Name : {{ student.username }}</h4></a>            
+            <h5>LinkedIn profile: {{student.linkedin_url }}</h5>
+        {% endfor %}
+    </div>
+
+{% endblock %}

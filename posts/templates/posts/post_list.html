@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class='' >
+
+    {% if post_list %}
+        {% for post in post_list %}
+            <div class='post-list'>
+                <h1><a href="{% url 'posts:details' pk=post.pk %}">{{ post.title }}</a></h1>                
+                <h5>{{ post.message }}</h5>
+                <div class='date'>
+                    <p>{{ post.created_at }}</p>
+                </div>
+                {% if user == post.user %}
+                    <a class='btn' href="{% url 'posts:update' pk=post.pk %}"><button>Update Post</button></a>
+                    <a class='btn' href="{% url 'posts:delete' pk=post.pk %}"><button>Delete</button></a>
+                {% endif %}
+            </div>    
+        {% endfor %}
+    
+    {% else %}
+        <h3>No posts till now</h3>
+    {% endif %}
+
+</div>
+
+{% endblock %}
