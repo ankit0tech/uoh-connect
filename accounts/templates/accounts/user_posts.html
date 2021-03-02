@@ -3,17 +3,19 @@
 {% block content %}
 
 <div class='post-list'>
-    <h3><a href="{% url 'department:details' pk=department.pk %}">{{ department.name }}</a></h3>
+
+    <h1>{{ student.username }}</h1>
+
     {% for post in posts %}
     <h3><a href="{% url 'posts:details' pk=post.pk %}">{{ post.title }}</a></h3>
     <p style='white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    max-width: 15ch;'>
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            max-width: 15ch;'>
         {{post.message}}
     </p>
     {% empty %}
-    <h1>No one in this department has posted till now</h1>
+    <h1>No posts till now</h1>
     {% endfor %}
 </div>
 

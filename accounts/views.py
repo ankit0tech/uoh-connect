@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -18,7 +18,7 @@ def user_signup(request):
 
     if request.method == 'POST':
         user_form = CreateUserForm(data = request.POST)
-        profile_form = UserProfileForm(data = request.POST)
+        profile_form = UserProfileForm(request.POST, request.FILES)
 
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
@@ -27,9 +27,9 @@ def user_signup(request):
 
             profile = profile_form.save(commit=False)
             profile.user=user     # one to one relationship
-            
+
             if 'profile_pic' in request.FILES:
-                print('profile pic is uploaded by {}'.format(user.username))
+                print('profile pic is uploaded')
                 profile.profile_pic = request.FILES['profile_pic']
 
             profile.save()
@@ -83,7 +83,8 @@ def user_logout(request):
 
 @login_required
 def user_profile(request, pk):
-    user_profile = UserProfile.objects.get(pk=pk)
+    user = get_object_or_404(User, pk=pk)
+    user_profile = UserProfile.objects.get(username=user.username)
     return render(request,'accounts/user_profile.html', {'user_profile': user_profile,})
 
 
@@ -128,3 +129,11 @@ def delete_profile(request, pk):
     user.delete()
     user_profile.delete()
     return HttpResponseRedirect(reverse_lazy('index'))
+
+def user_posts(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    posts = user.posts.all()
+
+    return render(request, 'accounts/user_posts.html',
+                            {'student': user,
+                            'posts': posts,})

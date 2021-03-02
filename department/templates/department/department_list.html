@@ -2,16 +2,18 @@
 
 {% block content %}
 
-    <div class = 'post-list'>
-        {% for dept in departments %}
-            <h3><a href="{% url 'department:details' pk=dept.pk %}">{{ dept.name }}</a></h3>
-            <p style = 'white-space: nowrap;
+<div class='post-list'>
+    {% for dept in departments %}
+    <h3><a href="{% url 'department:details' pk=dept.pk %}">{{ dept.name }}</a></h3>
+    <p style='white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         max-width: 30ch;'>
-                {{dept.description}}
-            </p>
-        {% endfor %}
-    </div>
+        {{dept.description}}
+    </p>
+    {% empty %}
+    <h1>Ooopsi.. No departments</h1>
+    {% endfor %}
+</div>
 
 {% endblock %}

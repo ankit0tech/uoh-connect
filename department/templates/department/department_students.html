@@ -2,12 +2,19 @@
 
 {% block content %}
 
-    <div class='post-list'>
-        <h3><a href="{% url 'department:details' pk=department.pk %}">{{ department.name }}</a></h3>
-        {% for student in students %}
-            <a href="{% url 'accounts:profile' pk=student.pk %}"><h4>Name : {{ student.username }}</h4></a>            
-            <h5>LinkedIn profile: {{student.linkedin_url }}</h5>
-        {% endfor %}
-    </div>
+<div class='post-list'>
+    <h3><a href="{% url 'department:details' pk=department.pk %}">{{ department.name }}</a></h3>
+    <!-- Here student is UserProfile not User -->
+    {% for student in students %}
+    <a href="{% url 'accounts:profile' pk=student.user.pk %}">
+        <h4>Name : {{ student.username }}</h4>
+    </a>
+    <h5>LinkedIn profile: {{student.linkedin_url }}</h5>
+    <a href="{% url 'accounts:posts' pk=student.user.pk %}"><button>Posts</button></a>
+
+    {% empty %}
+    <h1>No Students registered to this department till now</h1>
+    {% endfor %}
+</div>
 
 {% endblock %}

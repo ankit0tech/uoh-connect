@@ -4,17 +4,17 @@
 
 <div class='post-list'>
     {% if user_profile.profile_pic %}
-        <img class='profile_pic' src="{{ user_profile.profile_pic.url }}" alt="Profile Pic">
+    <img class='profile_pic' src="{{ user_profile.profile_pic.url }}" alt="Profile Pic">
     {% endif %}
     <h1>{{ user_profile.username }}</h1>
     <p>LinkedIn:{{ user_profile.linkedin_url }}</p>
     <p>{{ user_profile.department }}</p>
-    <p>{{ user_profile.course }}</p>
-    <p>{{ user_profile.year }}</p>
+    <p>{{ user_profile.course }}: {{ user_profile.year }}</p>
     <p>{{ user_profile.description }}</p>
+    <a href="{% url 'accounts:posts' pk=user_profile.user.pk %}"><button>Posts</button></a>
     {% if user == user_profile.user %}
-        <a href="{% url 'accounts:update_profile' pk=user_profile.user.pk %}"><button>Update Profile</button></a>
-        <a href="{% url 'accounts:delete_profile' pk=user_profile.user.pk %}"><button>Delete My Account</button></a>
+    <a href="{% url 'accounts:update_profile' pk=user_profile.user.pk %}"><button>Update Profile</button></a>
+    <a href="{% url 'accounts:delete_profile' pk=user_profile.user.pk %}"><button>Delete My Account</button></a>
     {% endif %}
 </div>
 
