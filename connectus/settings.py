@@ -29,7 +29,9 @@ SECRET_KEY = '8v=*gp!1548nj0!4c4i+irf+&*^#du0@$$4o*0wl51&r4b#o!a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['uoh-connect.herokuapp.com', 
+                'localhost', 
+                '127.0.0.1',]
 
 
 # Application definition
