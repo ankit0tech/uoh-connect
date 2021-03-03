@@ -26,7 +26,10 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.environ.get('SECRET_KEY_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG_VALUE')
+if os.environ.get('DEBUG_VALUE') == 'True':
+    DEBUG = True
+else:
+    DEBUG = False
 
 
 ALLOWED_HOSTS = ['uoh-connect.herokuapp.com', 
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'department',
     'posts',
     'mptt',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +151,16 @@ EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+# AWS S3 bucket setup
+
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_SIGNATURE_VERSION  = 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
