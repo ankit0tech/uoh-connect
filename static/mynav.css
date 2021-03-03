@@ -8,6 +8,13 @@
   align-items: center;
   padding: 30px 10%;
   height: 30px;
+  height: inherit;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .my-nav a,
