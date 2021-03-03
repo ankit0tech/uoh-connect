@@ -23,11 +23,10 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = '8v=*gp!1548nj0!4c4i+irf+&*^#du0@$$4o*0wl51&r4b#o!a'
+SECRET_KEY = os.environ.get('SECRET_KEY_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = os.environ.get('DEBUG_VALUE')
 
 
 ALLOWED_HOSTS = ['uoh-connect.herokuapp.com', 
