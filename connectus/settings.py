@@ -24,9 +24,11 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = '8v=*gp!1548nj0!4c4i+irf+&*^#du0@$$4o*0wl51&r4b#o!a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
+
 
 ALLOWED_HOSTS = ['uoh-connect.herokuapp.com', 
                 'localhost', 
@@ -141,7 +143,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
