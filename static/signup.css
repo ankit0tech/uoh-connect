@@ -17,6 +17,7 @@
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
+  min-width: 320px;
 }
 
 .sign-form h1 {
