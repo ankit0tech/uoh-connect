@@ -1,7 +1,7 @@
 .signup-form {
   margin-top: 5%;
   margin-bottom: 5%;
-  width: 620px;
+  width: 80%;
   /* min-height: 420px; */
   /* background: #24252a; */
   background: black;
@@ -12,6 +12,7 @@
   /* position: absolute; */
   /* transform: translate(-50%, -50%); */
   box-sizing: border-box;
+  /* padding: 0% 5% 0% 5%; */
   padding: 70px 30px;
   border-radius: 20px;
   margin-left: auto;
@@ -60,6 +61,8 @@ select {
 
 textarea {
   height: 150px;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* textarea::before {
