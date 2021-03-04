@@ -26,11 +26,11 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.environ.get('SECRET_KEY_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# if os.environ.get('DEBUG_VALUE') == 'True':
-#     DEBUG = True
-# else:
-#     DEBUG = False
-DEBUG = True
+if os.environ.get('DEBUG_VALUE') == 'True':
+    DEBUG = True
+else:
+    DEBUG = False
+
 
 ALLOWED_HOSTS = ['uoh-connect.herokuapp.com', 
                 'localhost', 
