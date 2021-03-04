@@ -23,4 +23,4 @@ Mainly used technologies are :-
 
 I used mptt to create hierarchical comment structure.
 
-Only admin can create or delete Departments. I have not created views to create, edit and delete Department.
+Only admin can create or delete Departments. I purposly did not created views to create, edit and delete Department.
